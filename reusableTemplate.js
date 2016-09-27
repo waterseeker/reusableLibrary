@@ -44,8 +44,19 @@ var library = (function(){
 
 		last : function(array, n) {},
 
-		indexOf : function(array, target){},
+		indexOf : function(array, target){
+			//find the number index 
+			//of the target value of the array
+			var resultIndex = -1;
 
+			for(var i = 0; i < array.length; i++){
+				if(array[i] === target && resultIndex === -1){
+					resultIndex = i;
+				}
+			}
+				return resultIndex;
+		},
+			
 		uniq : function(array) {},
 
 		// Advanced Arrays --- Complete Functions Below
