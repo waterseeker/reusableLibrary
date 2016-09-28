@@ -42,7 +42,10 @@ var library = (function(){
 			return n === undefined ? array[0] : array.slice(0, n);
 		},
 
-		last : function(array, n) {},
+		last : function(array, n) {
+			var last = array[array.length - 1];
+			return last;
+		},
 
 		indexOf : function(array, target){
 			//find the number index 
@@ -62,7 +65,21 @@ var library = (function(){
 		// Advanced Arrays --- Complete Functions Below
 		zip : function() {},
 
-		flatten : function(nestedArray, result) {},
+		flatten : function(nestedArray, result) {
+			Array.prototype.flatten = function() {
+    			var r = []; // var r is array
+    			for (var i = 0; i < this.length; ++i) { //loop through if i is less than the length of the array
+        		var v = this[i];
+        	if (v instanceof Array) {
+            	Array.prototype.push.apply(this, v.flatten());
+        	} else {
+            	r.push(v);
+        	}
+    	}
+    		return r;
+};
+
+		},
 
 		intersection : function() {},
 
@@ -74,6 +91,7 @@ var library = (function(){
 		memoize : function(func) {},
 
 		delay : function(func, wait) {}
+		
 	}
 })();
 
