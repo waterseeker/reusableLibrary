@@ -66,19 +66,19 @@ var library = (function(){
 		zip : function() {},
 
 		flatten : function(nestedArray, result) {
-			Array.prototype.flatten = function() {
-    			var r = []; // var r is array
-    			for (var i = 0; i < this.length; ++i) { //loop through if i is less than the length of the array
-        		var v = this[i];
-        	if (v instanceof Array) {
-            	Array.prototype.push.apply(this, v.flatten());
-        	} else {
-            	r.push(v);
-        	}
-    	}
-    		return r;
-};
+			var firstIten = nestedArray[0];
+			var retultArray = result === undefined ? [] : result
+			if (firstItem != undefined) {
+				if (Array.isArray(firstItem)){
+					this.flatten(firstItem, resultArray);
+			} else {
+				resultArray.push(firstItem);
+				nestedArray.shift();
+				this.flatten(nestedArray, resultArray);
+			}
 
+			}
+			return resultArray;
 		},
 
 		intersection : function() {},
