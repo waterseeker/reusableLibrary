@@ -29,14 +29,23 @@ var library = (function(){
 			var output = [];
 
 			for(var i = 0; i < list.length; i++) {
-				if(([i].isEven) === true) {
-					output.push(test(list[i]));
+				if(test(list[i])  === true) {
+					output.push(list[i]);
 				}
 			}
 			return output;
 		},
 
-		reject : function(list, test) {},
+		reject : function(list, test) {
+			var output = [];
+
+			for(var i = 0; i < list.length; i++) {
+				if(test(list[i])  === false) {
+					output.push(list[i]);
+				}
+			}
+			return output;
+		},
 
 		map : function(list, iterator) {},
 
