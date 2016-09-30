@@ -6,9 +6,35 @@ var library = (function(){
 		},
 
 		// Collections --- Complete Functions Below
-		each : function(list, iterator) {},
+		each : function(list, iterator) {
+            var output = [];
 
-		filter : function(list, test) {},
+            if(Array.isArray(list)){
+                for(var i = 0; i < list.length; i++){
+                    output.push(iterator(list[i], i, list));
+                }
+            } else  {
+
+                var objectKeys = Object.keys(list);
+                for(var i = 0; i < objectKeys.length; i++){
+                    var currentKey = objectKeys[i];
+                    output.push(iterator(list[currentKey], currentKey, list));
+                }    
+            }
+            return output;
+
+        },
+
+		filter : function(list, test) {
+			var output = [];
+
+			for(var i = 0; i < list.length; i++) {
+				if(([i].isEven) === true) {
+					output.push(test(list[i]));
+				}
+			}
+			return output;
+		},
 
 		reject : function(list, test) {},
 
@@ -68,8 +94,8 @@ var library = (function(){
 		zip : function() {},
 
 		flatten : function(nestedArray, result) {
-			var firstIten = nestedArray[0];
-			var retultArray = result === undefined ? [] : result
+			var firstItem = nestedArray[0];
+			var resultArray = result === undefined ? [] : result
 			if (firstItem != undefined) {
 				if (Array.isArray(firstItem)){
 					this.flatten(firstItem, resultArray);
