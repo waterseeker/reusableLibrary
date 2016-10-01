@@ -47,14 +47,27 @@ var library = (function(){
 			return output;
 		},
 
-		map : function(list, iterator) {},
+		map : function(list, iterator) {
+			var output = [];
+
+			this.each(list, function(item) {
+				output.push(iterator(item));
+			})
+			return output;
+		},
 
 		pluck : function(list, key) {
 			return this.map(list, function(item){
 				return item[key];
 			});
 		},
-		reduce : function(list, iterator, accumulator) {},
+		reduce : function(list, iterator, accumulator) {
+			var total = 0;
+			for(var i = 0; i < list.length; i++) {
+				iterator(list[i]);
+			}
+			return total;
+		},
 
 		every : function(list, iterator) {},
 
